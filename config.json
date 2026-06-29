@@ -1,0 +1,119 @@
+{
+  "log": {
+  },
+  "api": {
+    "tag": "api",
+    "listen": "0.0.0.0:10085",
+    "services": [
+      "HandlerService",
+      "LoggerService",
+      "StatsService",
+      "RoutingService",
+      "ReflectionService"
+    ]
+  },
+  "stats": {},
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserUplink": true,
+        "statsUserDownlink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true,
+      "statsOutboundUplink": true,
+      "statsOutboundDownlink": true
+    }
+  },
+  "inbounds": [
+    {
+      "tag": "new-inbound-mqs5ui8n",
+      "protocol": "vmess",
+      "listen": "0.0.0.0",
+      "port": 31733,
+      "settings": {
+        "clients": [
+          {
+            "id": "4486eeba-7c3c-4e9d-b66e-7cd528ecc639",
+            "level": 0,
+            "email": "client1@example.com"
+          },
+          {
+            "id": "9798e8ac-c4af-4626-8b75-d0c06a074e30",
+            "level": 1,
+            "email": "client2@example.com"
+          }
+        ],
+        "default": {
+          "level": 0
+        }
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "none"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "tag": "new-inbound-mqs5unp7",
+      "protocol": "vless",
+      "listen": "0.0.0.0",
+      "port": 15743,
+      "settings": {
+        "clients": [
+          {
+            "id": "4f4640d0-83c1-408e-8a77-3ef4b0eb4127",
+            "level": 0,
+            "email": "user@example.com",
+            "flow": "xtls-rprx-vision"
+          }
+        ],
+        "decryption": "none",
+        "default": {
+          "level": 0
+        }
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "dest": "www.speedtest.net:443",
+          "serverNames": [
+            "www.speedtest.net"
+          ],
+          "fingerprint": "chrome",
+          "privateKey": "COxE8vv6vRy6d5Wrq9bInckVrYczP5KDghuAeeuZ420",
+          "publicKey": "1N43q61fCBy2u5Q2d5i49fYYCqLqCmy0Aah--I3HzDg",
+          "shortIds": [
+            "",
+            "7d57932c",
+            "722431f1aed4b3b3"
+          ],
+          "serverName": "www.speedtest.net",
+          "shortId": "7d57932c"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    }
+  ]
+}
