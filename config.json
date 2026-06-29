@@ -1,5 +1,8 @@
 {
   "log": {
+    "loglevel": "info",
+    "access": "/opt/apex-vpn-worker/logs/xray-access.log",
+    "error": "/opt/apex-vpn-worker/logs/xray-error.log"
   },
   "api": {
     "tag": "api",
@@ -28,6 +31,19 @@
     }
   },
   "inbounds": [
+   {
+      "port": 1080,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "ip": "0.0.0.0"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      }
+    },
     {
       "tag": "new-inbound-mqs5ui8n",
       "protocol": "vmess",
@@ -85,9 +101,9 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "dest": "www.speedtest.net:443",
+          "dest": "snapp.ir:443",
           "serverNames": [
-            "www.speedtest.net"
+            "snapp.ir"
           ],
           "fingerprint": "chrome",
           "privateKey": "COxE8vv6vRy6d5Wrq9bInckVrYczP5KDghuAeeuZ420",
@@ -97,7 +113,7 @@
             "7d57932c",
             "722431f1aed4b3b3"
           ],
-          "serverName": "www.speedtest.net",
+          "serverName": "snapp.ir",
           "shortId": "7d57932c"
         }
       },
